@@ -1,0 +1,27 @@
+author: eduardb
+description: Arduino RF24 library
+type: lib
+version: 1.0
+
+platforms: [ esp8266 ]
+
+sources:
+  - src
+includes:
+  - include
+libs:
+  - origin: https://github.com/mongoose-os-libs/arduino-compat
+  - origin: https://github.com/eduardb/arduino-spi
+
+cdefs:
+  ARDUINO_ARCH_ESP8266: 1
+
+tags:
+  - arduino
+  - c
+  - js
+  - core
+  - nRF24L01
+  - RF24
+
+manifest_version: 2017-09-29
