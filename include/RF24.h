@@ -108,7 +108,7 @@ public:
    * @param _cspin The pin attached to Chip Select
    */
   RF24(uint16_t _cepin, uint16_t _cspin);
-  //#if defined (RF24_LINUX)
+  #if defined (RF24_LINUX)
   
     /**
   * Optional Linux Constructor
@@ -122,7 +122,7 @@ public:
   */
   
   RF24(uint16_t _cepin, uint16_t _cspin, uint32_t spispeed );
-  //#endif
+  #endif
 
   #if defined (RF24_LINUX)
   virtual ~RF24() {};
