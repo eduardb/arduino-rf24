@@ -7,8 +7,10 @@
 extern "C" {
 #endif
 
-RF24 *mgos_arduino_rf24_create(uint16_t _cepin, uint16_t _cspin);
+RF24 *mgos_arduino_rf24_create(int _cepin, int _cspin);
 int mgos_arduino_rf24_begin(RF24 *rf24);
+void mgos_arduino_rf24_open_writing_pipe(RF24 *rf24, const char *address);
+void mgos_arduino_rf24_open_reading_pipe(RF24 *rf24, int number, const char *address);
 
 
 #ifdef __cplusplus

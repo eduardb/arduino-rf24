@@ -9,11 +9,25 @@
 
 #include "mgos_arduino_rf24.h"
 
-RF24 *mgos_arduino_rf24_create(uint16_t _cepin, uint16_t _cspin) {
+RF24 *mgos_arduino_rf24_create(int _cepin, int _cspin)
+{
     return new RF24(_cepin, _cspin);
 }
 
-int mgos_arduino_rf24_begin(RF24 *rf24) {
+int mgos_arduino_rf24_begin(RF24 *rf24)
+{
     if (rf24 == nullptr) return -1;
     return rf24->begin() ? 1 : 0;
+}
+
+void mgos_arduino_rf24_open_writing_pipe(RF24 *rf24, const char *address)
+{
+    if (rf24 == nullptr) return;
+    rf24->openWritingPipe((uint8_t *) address);
+}
+
+void mgos_arduino_rf24_open_reading_pipe(RF24 *rf24, int number, const char *address)
+{
+    if (rf24 == nullptr) return;
+    rf24->openReadingPipe((uint8_t) number, (uint8_t *) address);
 }
