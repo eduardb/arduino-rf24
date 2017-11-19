@@ -3,7 +3,8 @@ let RF24 = {
     _begin: ffi('int mgos_arduino_rf24_begin(void *)'),
     _openWritingPipe: ffi('void mgos_arduino_rf24_open_writing_pipe(void *, char *)'),
     _openReadingPipe: ffi('void mgos_arduino_rf24_open_reading_pipe(void *, int, char *)'),
-    _writeDouble: ffi('int mgos_arduino_rf24_write(void *, double)'),
+    _writeFloat: ffi('int mgos_arduino_rf24_write_float(void *, float)'),
+    _writeString: ffi('int mgos_arduino_rf24_write_string(void *, char *)'),
 
     create: function(cepin, cspin) {
         let obj = Object.create(RF24._proto);
@@ -23,7 +24,9 @@ let RF24 = {
         },
         write: function(data) {
             if (typeof data === 'number') {
-                return RF24._writeDouble(this.rf24, data) === 1;
+                return RF24._writeFloat(this.rf24, data) === 1;
+            } else if (typeof data === 'string') {
+                return RF24._writeString(this.rf24, data) === 1;
             }
         }
     },
