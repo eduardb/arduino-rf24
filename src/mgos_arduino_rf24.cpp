@@ -41,5 +41,5 @@ int mgos_arduino_rf24_write_float(RF24 *rf24, float data)
 int mgos_arduino_rf24_write_string(RF24 *rf24, char *data)
 {
     if (rf24 == nullptr) return -1;
-    return rf24->write(&data, strlen(data))? 1 : 0;
+    return rf24->write(data, strlen(data) + 1)? 1 : 0;
 }
